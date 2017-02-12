@@ -37,6 +37,9 @@ export default class App extends Component {
     // 登陆
     handleLogin() {
         let username = this.state.username;
+
+        // 随机生成游客名字
+        // username = '游客' + Math.floor(Math.random()*89+10)
         const uid = this.generateUid();
         if (!username) {
             username = '游客'+ uid;
@@ -44,7 +47,6 @@ export default class App extends Component {
         this.setState({uid:uid, username:username});
         this.state.socket.emit('login', {uid:uid, username:username})
     }
-
     render() {
         let renderDOM;
         if (this.state.uid) {

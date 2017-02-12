@@ -50,7 +50,7 @@ export default class ChatInput extends Component {
                     <input type="text" maxLength="140" placeholder="按回车提交" value={this.state.message} 
                     onKeyPress={this.handleKeyPress.bind(this)} onChange={this.handleChange.bind(this)}/>
                 </div>
-                <div className="submit">
+                <div className="button">
                     <button type="button" onClick={this.handleClick.bind(this)}>提交</button>
                 </div>
             </div>

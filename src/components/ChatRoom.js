@@ -55,7 +55,6 @@ export default class ChatRoom extends Component {
 
     // 发送新消息
     updateMsg(obj) {
-        console.log(obj);
         let messages = this.state.messages;
         this.generateTime();
         const newMsg = {type:'chat', username:obj.username, uid:obj.uid, action:obj.message, msgId:this.generateMsgId(), time:this.generateTime()};
@@ -65,11 +64,16 @@ export default class ChatRoom extends Component {
 
     // 生成时间
     generateTime() {
-        const hour = new Date().getHours(),
-              minute = new Date().getMinutes();
+        let hour = new Date().getHours(),
+            minute = new Date().getMinutes();
+        hour = (hour==0) ? '00' : hour;
+        minute = (minute<10) ? '0' + minute : minute;
         return hour + ':' + minute;
     }
 
+    handleLogout() {
+        location.reload();
+    }
     // 开始监控socket
     ready() {
         const socket = this.state.socket;
@@ -85,12 +89,19 @@ export default class ChatRoom extends Component {
     }
 
     render() {
-        return(<div className="chat-room">
-                <RoomStatus onlineCount={this.state.onlineCount} userhtml={this.state.userhtml}/>欢迎进入聊天室
+        return(
+            <div className="chat-room">
+                <div className="welcome">
+                    <div className="room-name">鱼头的聊天室 | {this.state.myName}</div>
+                    <div className="button">
+                        <button onClick={this.handleLogout}>登出</button>
+                    </div>
+                </div>
+                <RoomStatus onlineCount={this.state.onlineCount} userhtml={this.state.userhtml}/>
                 <div ref="chatArea">
                     <Messages messages={this.state.messages} myId={this.state.myId} />
                     <ChatInput myId={this.state.myId} myName={this.state.myName} socket={this.state.socket}/>
                 </div>
-                </div>)
+            </div>)
     }
 }
