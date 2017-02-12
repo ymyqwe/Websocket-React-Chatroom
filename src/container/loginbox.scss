@@ -22,6 +22,8 @@ body {
 @media (max-width: $breakpoint-tablet) {
     body{
         background: url('../imgs/bg.jpg') center center;
+        background-size: cover;
+        background-attachment: fixed;
     }
 }
 .login-box {

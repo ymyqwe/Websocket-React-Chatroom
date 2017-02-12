@@ -8,6 +8,8 @@ var io = require('socket.io')(server);
 var compiler = webpack(config);
 
 app.use(express.static(path.join(__dirname, '/')))
+
+// use in develope mode
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
