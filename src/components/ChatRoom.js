@@ -56,7 +56,6 @@ export default class ChatRoom extends Component {
     // 发送新消息
     updateMsg(obj) {
         let messages = this.state.messages;
-        this.generateTime();
         const newMsg = {type:'chat', username:obj.username, uid:obj.uid, action:obj.message, msgId:this.generateMsgId(), time:this.generateTime()};
         messages = messages.concat(newMsg);
         this.setState({messages:messages})

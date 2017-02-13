@@ -26,12 +26,12 @@ class Message extends Component {
                 </div>
             )
         } else {
-                return (
-                    <div className={(this.props.isMe)? 'me one-message':'other one-message'}>
-                            <p className="time"><span>{this.props.msgUser}</span> {this.props.time}</p>
-                            <div className="message-content">{this.props.action}</div>
-                    </div>
-                )
+            return (
+                <div className={(this.props.isMe)? 'me one-message':'other one-message'}>
+                        <p className="time"><span>{this.props.msgUser}</span> {this.props.time}</p>
+                        <div className="message-content">{this.props.action}</div>
+                </div>
+            )
         }
     }
 }
