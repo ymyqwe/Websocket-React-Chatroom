@@ -44,7 +44,6 @@ export default class ChatInput extends Component {
     return false;
   }
   render() {
-    console.log(this.props);
     return (
       <div className="input-box">
         <div className="input">
