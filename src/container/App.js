@@ -30,11 +30,9 @@ const App = (props) => {
               type="text"
               placeholder="请输入用户名"
               onChange={(e) => {
+                // 异步操作，事件需要维持
                 e.persist();
-                setUser((prevState) => {
-                  console.log(e);
-                  return Object.assign(prevState, { username: e.target.value });
-                });
+                setUser((prevState) => ({ ...prevState, ...{ username: e.target.value } }));
               }} /* onKeyPress={this.handleKeyPress.bind(this)} */
             />
           </div>
@@ -44,7 +42,7 @@ const App = (props) => {
               onClick={() => {
                 const uid = generateUid();
                 const username = user.username ? user.username : `游客${uid}`;
-                setUser((prevState) => Object.assign(prevState, { uid, username }));
+                setUser((prevState) => ({ ...prevState, ...{ uid, username } }));
                 user.socket.emit('login', { uid, username });
               }}
             >
