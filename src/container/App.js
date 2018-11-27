@@ -13,11 +13,22 @@ const userState = (initialState) => {
 };
 
 const generateUid = () => {
-  return new Date().getTime() + '' + Math.floor(Math.random() * 9 + 1);
+  return new Date().getTime() + '' + Math.floor(Math.random() * 999 + 1);
 };
 const App = (props) => {
   const [user, setUser] = userState({ username: '', uid: '', socket: io() });
-  console.log(user);
+  const handleLogin = () => {
+    const uid = generateUid();
+    const username = user.username ? user.username : `游客${uid}`;
+    setUser((prevState) => ({ ...prevState, ...{ uid, username } }));
+    user.socket.emit('login', { uid, username });
+  };
+  const handleKeyPress = (e) => {
+    if (e.key == 'Enter') {
+      handleLogin();
+    }
+    return false;
+  };
   return (
     <div>
       {user.uid ? (
@@ -33,19 +44,12 @@ const App = (props) => {
                 // 异步操作，事件需要维持
                 e.persist();
                 setUser((prevState) => ({ ...prevState, ...{ username: e.target.value } }));
-              }} /* onKeyPress={this.handleKeyPress.bind(this)} */
+              }}
+              onKeyPress={handleKeyPress}
             />
           </div>
           <div className="submit">
-            <button
-              type="button"
-              onClick={() => {
-                const uid = generateUid();
-                const username = user.username ? user.username : `游客${uid}`;
-                setUser((prevState) => ({ ...prevState, ...{ uid, username } }));
-                user.socket.emit('login', { uid, username });
-              }}
-            >
+            <button type="button" onClick={handleLogin}>
               提交
             </button>
           </div>
