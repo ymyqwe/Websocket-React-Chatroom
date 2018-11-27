@@ -91,9 +91,11 @@ export default class ChatRoom extends Component {
         return(
             <div className="chat-room">
                 <div className="welcome">
-                    <div className="room-name">鱼头的聊天室 | {this.state.myName}</div>
-                    <div className="button">
-                        <button onClick={this.handleLogout}>登出</button>
+                    <div className="room-action">
+                        <div className="room-name">鱼头的聊天室 | {this.state.myName}</div>
+                        <div className="button">
+                            <button onClick={this.handleLogout}>登出</button>
+                        </div>
                     </div>
                 </div>
                 <RoomStatus onlineCount={this.state.onlineCount} userhtml={this.state.userhtml}/>
