@@ -24,7 +24,11 @@
   },
   "homepage": "https://github.com/ymyqwe/Websocket-React-Chatroom#readme",
   "dependencies": {
-    "babel-core": "^6.23.1",
+    "@babel/core": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^6.2.10",
     "babel-preset-env": "^1.7.0",
