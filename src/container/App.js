@@ -15,6 +15,7 @@ const userState = (initialState) => {
 const generateUid = () => {
   return new Date().getTime() + '' + Math.floor(Math.random() * 999 + 1);
 };
+
 const App = (props) => {
   const [user, setUser] = userState({ username: '', uid: '', socket: io() });
   const handleLogin = () => {

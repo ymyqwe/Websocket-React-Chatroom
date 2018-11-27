@@ -156,33 +156,38 @@ body {
     }
   }
 }
-.input-box {
+.bottom-area {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  display: flex;
   background: #fff;
   padding: 10px 0;
   font-size: 14px;
-  .input {
-    flex: 1;
-    margin: 0 10px;
-    input {
-      width: 100%;
-      outline: none;
-      color: rgba(0, 0, 0, 0.870588);
-      font-size: 100%;
-      line-height: 24px;
-      border-bottom-width: 2px;
-      -webkit-transition: border-color 0.2s ease;
-      background: 0;
-      border: 0;
-      border-bottom: 2px solid rgb(224, 224, 224);
+  .input-box {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    .input {
+      flex: 1;
+      margin: 0 10px;
+      input {
+        width: 100%;
+        outline: none;
+        color: rgba(0, 0, 0, 0.870588);
+        font-size: 100%;
+        line-height: 24px;
+        border-bottom-width: 2px;
+        -webkit-transition: border-color 0.2s ease;
+        background: 0;
+        border: 0;
+        border-bottom: 2px solid rgb(224, 224, 224);
+      }
     }
-  }
+  }  
 }
+
 .button {
   float: right;
   margin-right: 10px;
