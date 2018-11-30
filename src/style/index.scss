@@ -149,8 +149,6 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
-    p {
-    }
     .message-content {
       background: #a2e563;
     }
@@ -179,13 +177,14 @@ body {
         font-size: 100%;
         line-height: 24px;
         border-bottom-width: 2px;
+        transition: border-color 0.2s ease;
         -webkit-transition: border-color 0.2s ease;
         background: 0;
         border: 0;
         border-bottom: 2px solid rgb(224, 224, 224);
       }
     }
-  }  
+  }
 }
 
 .button {
