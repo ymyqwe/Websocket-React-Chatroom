@@ -13,7 +13,7 @@ const initValue = {
 };
 
 function reducer(state, action) {
-  console.log(state, action);
+  // console.log(state, action);
   switch (action.type) {
     case 'login':
       return { ...state, ...action.payload };
