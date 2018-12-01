@@ -1,44 +1,27 @@
-import React, { /* useState */ useReducer } from 'react';
+import React, { useContext, useState } from 'react';
 import ChatRoom from '../components/ChatRoom';
 import '../style/index.scss';
+import { Context } from '../context';
 
-const initialState = {
-  username: '',
-  uid: '',
-  socket: io()
-};
-
-// const userState = (initialState) => {
-//   const [user, setUser] = useState(initialState);
-//   return [user, setUser];
-// };
+const userState = (username) => {
+  const [user, setUsername] = useState(username);
+  return [user, setUsername];
+}
 
 const generateUid = () => {
   return new Date().getTime() + '' + Math.floor(Math.random() * 999 + 1);
 };
 
-// Redux like reducer
-function reducer(state, action) {
-  switch (action.type) {
-    case 'login':
-      return { ...state, ...action.payload };
-    case 'inputUser':
-      return { ...state, ...action.payload };
-    default:
-      return state;
-  }
-}
-
 const App = (props) => {
-  const [user, dispatch] = useReducer(reducer, initialState);
-  console.log('user', user);
-  // const [user, setUser] = userState({ username: '', uid: '', socket: io() });
+  // 获取context中的数据
+  const { state, dispatch } = useContext(Context);
+  // 输入输出用户名
+  const [user, setUsername] = userState();
   const handleLogin = () => {
     const uid = generateUid();
-    const username = user.username ? user.username : `游客${uid}`;
-    // setUser((prevState) => ({ ...prevState, ...{ uid, username } }));
+    const username = user ? user : `游客${uid}`;
     dispatch({ type: 'login', payload: { uid, username } });
-    user.socket.emit('login', { uid, username });
+    state.socket.emit('login', { uid, username });
   };
   const handleKeyPress = (e) => {
     if (e.key == 'Enter') {
@@ -48,8 +31,8 @@ const App = (props) => {
   };
   return (
     <div>
-      {user.uid ? (
-        <ChatRoom uid={user.uid} username={user.username} socket={user.socket} />
+      {state.uid ? (
+        <ChatRoom uid={state.uid} username={state.username} socket={state.socket} />
       ) : (
         <div className="login-box">
           <h2>登 陆</h2>
@@ -57,12 +40,7 @@ const App = (props) => {
             <input
               type="text"
               placeholder="请输入用户名"
-              onChange={(e) => {
-                // 异步操作，事件需要维持
-                e.persist();
-                dispatch({ type: 'inputUser', payload: { username: e.target.value } });
-                // setUser((prevState) => ({ ...prevState, ...{ username: e.target.value } }));
-              }}
+              onChange={(e) => setUsername(e.target.value)}
               onKeyPress={handleKeyPress}
             />
           </div>
