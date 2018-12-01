@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "node server.js",
+    "start": "NODE_ENV=dev node server.js",
+    "server": "NODE_ENV=production node server.js",
+    "build": "webpack -p",
     "lint": "eslint src --fix --ext .js"
   },
   "repository": {
