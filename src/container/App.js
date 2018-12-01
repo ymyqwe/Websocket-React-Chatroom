@@ -32,8 +32,10 @@ const App = (props) => {
   return (
     <div>
       {state.uid ? (
+        // 已登录
         <ChatRoom uid={state.uid} username={state.username} socket={state.socket} />
       ) : (
+        // 登录界面
         <div className="login-box">
           <h2>登 陆</h2>
           <div className="input">
