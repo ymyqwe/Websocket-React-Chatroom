@@ -1,5 +1,13 @@
+[![Build Status](https://travis-ci.org/ymyqwe/Websocket-React-Chatroom.svg?branch=master)](https://travis-ci.org/ymyqwe/Websocket-React-Chatroom)
+
 # Websocket-React-Chatroom
-A chatroom powered by React and Websocket
+
+A Chatroom powered by [`React`](https://reactjs.org/), [`Socket.io`](https://socket.io/)
+
+## Features
+
+- Using [React-Hooks](https://reactjs.org/docs/hooks-intro.html) to manage state
+- Using [Socket.io](https://socket.io/) to receive real-time message
 
 ## Getting Started
 
@@ -7,13 +15,43 @@ A chatroom powered by React and Websocket
 
 2. Install dependencies
 
-    npm install
+```bash
+npm install
+```
 
-3. Try out 
+3. Try out
 
-    npm start
+```bash
+npm start
+```
 
-4. Open `http://localhost:3300`
+## Demo
+
+[Live Demo](http://chat.yumingyuan.me)
 
 ## Preview
+
 ![image](https://github.com/ymyqwe/Websocket-React-Chatroom/raw/master/chat.gif)
+
+## TODO
+- [x] [Redux](https://github.com/reduxjs/redux)-like style state manage
+- [ ] [Log4js](https://github.com/log4js-node/log4js-node)
+- [ ] [React-router](https://github.com/ReactTraining/react-router)
+- [ ] [Typescript](https://github.com/Microsoft/TypeScript)
+- [ ] [Webpack-v4](https://github.com/webpack/webpack)
+- [ ] Test
+
+## Changelog
+### [2.0.0] / 2018-12-03
+
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Eslint](https://github.com/eslint/eslint)
+- [Prettier](https://github.com/prettier/prettier)
+- [Travis-CI](https://travis-ci.org/)
+
+### [1.0.0] / 2017-02-15
+
+- React state
+- [Socket.io](https://socket.io/)
+- [Webpack-v2](https://github.com/webpack/webpack)
+- [Expressjs](https://github.com/expressjs/express)
