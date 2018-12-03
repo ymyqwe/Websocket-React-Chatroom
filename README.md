@@ -2,7 +2,7 @@
 
 # Websocket-React-Chatroom
 
-A :rocket:Chatroom powered by [`React`](https://reactjs.org/), [`Socket.io`](https://socket.io/)
+A Chatroom powered by [`React`](https://reactjs.org/), [`Socket.io`](https://socket.io/)
 
 ## Features
 
@@ -38,4 +38,20 @@ npm start
 - [ ] [Log4js](https://github.com/log4js-node/log4js-node)
 - [ ] [React-router](https://github.com/ReactTraining/react-router)
 - [ ] [Typescript](https://github.com/Microsoft/TypeScript)
+- [ ] [Webpack-v4](https://github.com/webpack/webpack)
 - [ ] Test
+
+## Changelog
+### [2.0.0] / 2018-12-03
+
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Eslint](https://github.com/eslint/eslint)
+- [Prettier](https://github.com/prettier/prettier)
+- [Travis-CI](https://travis-ci.org/)
+
+### [1.0.0] / 2017-02-15
+
+- React state
+- [Socket.io](https://socket.io/)
+- [Webpack-v2](https://github.com/webpack/webpack)
+- [Expressjs](https://github.com/expressjs/express)
