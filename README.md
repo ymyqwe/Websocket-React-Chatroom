@@ -2,7 +2,7 @@
 
 # Websocket-React-Chatroom
 
-A Chatroom powered by [`React`](https://reactjs.org/), [`Socket.io`](https://socket.io/)
+A :rocket:Chatroom powered by [`React`](https://reactjs.org/), [`Socket.io`](https://socket.io/)
 
 ## Features
 
