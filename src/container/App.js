@@ -1,68 +1,59 @@
-import React, { Component, PropTypes } from 'react';
+import React, { useContext, useState } from 'react';
 import ChatRoom from '../components/ChatRoom';
-import './loginbox.scss';
+import '../style/index.scss';
+import { Context } from '../context';
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username:'',
-            uid:'',
-            socket: io()
-        }
-    }
-
-    // 生成用户id
-    generateUid() {
-        return new Date().getTime()+""+Math.floor(Math.random()*9+1);
-    }
-
-    // 监控名称变化
-    handleChange(e) {
-        this.setState({username: e.target.value})
-    }
-
-    // 监控点击提交或按回车
-    handleClick(e) {
-        e.preventDefault();
-        this.handleLogin();
-    }
-    handleKeyPress(e) {
-        if (e.key == 'Enter') {
-            this.handleLogin()
-        }
-        return false;
-    }
-
-    // 登陆
-    handleLogin() {
-        let username = this.state.username;
-
-        // 随机生成游客名字
-        // username = '游客' + Math.floor(Math.random()*89+10)
-        const uid = this.generateUid();
-        if (!username) {
-            username = '游客'+ uid;
-        }
-        this.setState({uid:uid, username:username});
-        this.state.socket.emit('login', {uid:uid, username:username})
-    }
-    render() {
-        let renderDOM;
-        if (this.state.uid) {
-            renderDOM = <ChatRoom uid={this.state.uid} username={this.state.username} socket={this.state.socket}/>
-        } else {
-            renderDOM = (<div className="login-box">
-                            <h2>登 陆</h2>
-                            <div className="input">
-                                <input type="text" placeholder="请输入用户名" onChange={this.handleChange.bind(this)}
-                                onKeyPress={this.handleKeyPress.bind(this)}/>
-                            </div>
-                            <div className="submit">
-                                <button type="button" onClick={this.handleClick.bind(this)} >提交</button>
-                            </div>
-                        </div>)
-        }
-        return (<div>{renderDOM}</div>)
-    }
+const userState = (username) => {
+  const [user, setUsername] = useState(username);
+  return [user, setUsername];
 }
+
+const generateUid = () => {
+  return new Date().getTime() + '' + Math.floor(Math.random() * 999 + 1);
+};
+
+const App = (props) => {
+  // 获取context中的数据
+  const { state, dispatch } = useContext(Context);
+  // 输入输出用户名
+  const [user, setUsername] = userState();
+  const handleLogin = () => {
+    const uid = generateUid();
+    const username = user ? user : `游客${uid}`;
+    dispatch({ type: 'login', payload: { uid, username } });
+    state.socket.emit('login', { uid, username });
+  };
+  const handleKeyPress = (e) => {
+    if (e.key == 'Enter') {
+      handleLogin();
+    }
+    return false;
+  };
+  return (
+    <div>
+      {state.uid ? (
+        // 已登录
+        <ChatRoom uid={state.uid} username={state.username} socket={state.socket} />
+      ) : (
+        // 登录界面
+        <div className="login-box">
+          <h2>登 陆</h2>
+          <div className="input">
+            <input
+              type="text"
+              placeholder="请输入用户名"
+              onChange={(e) => setUsername(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+          </div>
+          <div className="submit">
+            <button type="button" onClick={handleLogin}>
+              提交
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+export default App;

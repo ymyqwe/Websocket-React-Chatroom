@@ -1,20 +1,26 @@
 var path = require('path');
 var express = require('express');
 var app = express();
-var webpack = require('webpack');
-var config = require('./webpack.config');
+var openBrowsers = require('open-browsers');
+// 开发模式热更新
+if (process.env.NODE_ENV !== 'production') {
+    var webpack = require('webpack');
+    var config = require('./webpack.config');
+    var compiler = webpack(config);
+    // use in develope mode
+    app.use(require('webpack-dev-middleware')(compiler, {
+        noInfo: true,
+        publicPath: config.output.publicPath
+    }));
+    app.use(require('webpack-hot-middleware')(compiler));
+}
+
 var server =require('http').createServer(app);
 var io = require('socket.io')(server);
-var compiler = webpack(config);
 
 app.use(express.static(path.join(__dirname, '/')))
 
-// use in develope mode
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
-app.use(require('webpack-hot-middleware')(compiler));
+
 
 
 app.get('/', function(req, res){
@@ -70,5 +76,8 @@ io.on('connection', function(socket) {
 })
 
 server.listen(3300, function(err) {
+    if (process.env.NODE_ENV !== 'production') {
+        openBrowsers('http://localhost:3300')
+    }
     console.log('Listening at *:3300');
 })
