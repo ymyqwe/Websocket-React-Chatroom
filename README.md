@@ -34,7 +34,7 @@ npm start
 ![image](https://github.com/ymyqwe/Websocket-React-Chatroom/raw/master/chat.gif)
 
 ## TODO
-- [x] [Redux] like style state manage
+- [x] [Redux](https://github.com/reduxjs/redux)-like style state manage
 - [ ] [Log4js](https://github.com/log4js-node/log4js-node)
 - [ ] [React-router](https://github.com/ReactTraining/react-router)
 - [ ] [Typescript](https://github.com/Microsoft/TypeScript)
