@@ -34,6 +34,7 @@ npm start
 ![image](https://github.com/ymyqwe/Websocket-React-Chatroom/raw/master/chat.gif)
 
 ## TODO
+
 - [x] [Redux](https://github.com/reduxjs/redux)-like style state manage
 - [ ] [Log4js](https://github.com/log4js-node/log4js-node)
 - [ ] [React-router](https://github.com/ReactTraining/react-router)
@@ -42,6 +43,11 @@ npm start
 - [ ] Test
 
 ## Changelog
+
+### [2.1.0] / 2018-12-11
+
+- Refactor Message.js with `useRef` and `useEffect`
+
 ### [2.0.0] / 2018-12-03
 
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
