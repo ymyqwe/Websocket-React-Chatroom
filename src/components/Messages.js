@@ -22,7 +22,10 @@ const Message = (props) => {
 
 const Messages = (props) => {
   const messageList = useRef(null);
+  // 使用context中的状态，而不是props传值
   const { state } = useContext(Context);
+
+  // 使用useFffect取代componentDidUpdate
   useEffect(() => {
     window.scrollTo(0, messageList.current.clientHeight + 50);
   });
