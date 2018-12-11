@@ -15,7 +15,7 @@ const initValue = {
 function reducer(state, action) {
   // console.log(state, action);
   switch (action.type) {
-    case 'login':
+    case 'LOGIN':
       return { ...state, ...action.payload };
     case 'UPDATE_SYSTEM_MESSAGE':
       return { ...state, ...{ messages: state.messages.concat(action.payload.message) }, ...{ onlineUsers: action.payload.onlineUsers }, ...{ onlineCount: action.payload.onlineCount } };

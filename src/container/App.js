@@ -6,7 +6,7 @@ import { Context } from '../context';
 const userState = (username) => {
   const [user, setUsername] = useState(username);
   return [user, setUsername];
-}
+};
 
 const generateUid = () => {
   return new Date().getTime() + '' + Math.floor(Math.random() * 999 + 1);
@@ -20,8 +20,8 @@ const App = (props) => {
   const handleLogin = () => {
     const uid = generateUid();
     const username = user ? user : `游客${uid}`;
-    dispatch({ type: 'login', payload: { uid, username } });
-    state.socket.emit('login', { uid, username });
+    dispatch({ type: 'LOGIN', payload: { uid, username } });
+    state.socket.emit('LOGIN', { uid, username });
   };
   const handleKeyPress = (e) => {
     if (e.key == 'Enter') {
@@ -39,12 +39,7 @@ const App = (props) => {
         <div className="login-box">
           <h2>登 陆</h2>
           <div className="input">
-            <input
-              type="text"
-              placeholder="请输入用户名"
-              onChange={(e) => setUsername(e.target.value)}
-              onKeyPress={handleKeyPress}
-            />
+            <input type="text" placeholder="请输入用户名" onChange={(e) => setUsername(e.target.value)} onKeyPress={handleKeyPress} />
           </div>
           <div className="submit">
             <button type="button" onClick={handleLogin}>
