@@ -36,13 +36,18 @@ npm start
 ## TODO
 
 - [x] [Redux](https://github.com/reduxjs/redux)-like style state manage
-- [ ] [Log4js](https://github.com/log4js-node/log4js-node)
+- [x] [Log4js](https://github.com/log4js-node/log4js-node)
 - [ ] [React-router](https://github.com/ReactTraining/react-router)
 - [ ] [Typescript](https://github.com/Microsoft/TypeScript)
-- [ ] [Webpack-v4](https://github.com/webpack/webpack)
+- [x] [Webpack-v4](https://github.com/webpack/webpack)
 - [ ] Test
 
 ## Changelog
+
+### [2.2.0] / 2019-03-26
+
+- Upgrade webpack to v4
+- Add logs using log4js
 
 ### [2.1.0] / 2018-12-11
 
