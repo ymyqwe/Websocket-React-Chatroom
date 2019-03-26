@@ -1,5 +1,5 @@
 var path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -7,12 +7,15 @@ module.exports = {
   entry: ['./src/index', 'webpack-hot-middleware/client?reload=true'],
   devtool: 'source-map',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/'
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: 'index.html'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     // Use NoErrorsPlugin for webpack 1.x
     new webpack.NoEmitOnErrorsPlugin()

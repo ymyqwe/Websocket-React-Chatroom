@@ -1,38 +1,43 @@
 var path = require('path');
-var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: [
-        './src/index'
-    ],
-    devtool: 'source-map',
-    output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/dist/'
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
+  mode: 'production',
+  entry: ['./src/index'],
+  devtool: false,
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.[hash].js',
+    publicPath: '/dist/'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: 'index.html'
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.(png|jpg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
             }
-        })
-    ],
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loaders: ['babel-loader']
-            },
-            {
-                test: /\.(png|jpg)$/,
-                loader: 'url-loader?limit=8192'
-            },
-            {
-                test: /\.scss$/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
-            }
+          }
         ]
-    }
-}
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  }
+};

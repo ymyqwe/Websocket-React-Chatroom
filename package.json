@@ -57,6 +57,7 @@
     "eslint": "^5.9.0",
     "eslint-config-google": "^0.11.0",
     "open-browsers": "^1.1.1",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-middleware": "^1.12.2",
     "webpack-dev-server": "^3.2.1"
   }

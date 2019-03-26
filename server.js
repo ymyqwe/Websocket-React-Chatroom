@@ -10,21 +10,29 @@ if (process.env.NODE_ENV !== 'production') {
   // use in develope mode
   app.use(
     require('webpack-dev-middleware')(compiler, {
-      noInfo: true,
       publicPath: config.output.publicPath
     })
   );
   app.use(require('webpack-hot-middleware')(compiler));
+
+  app.get('/', function(req, res) {
+    const filename = path.join(compiler.outputPath, 'index.html');
+    compiler.outputFileSystem.readFile(filename, function(err, result) {
+      res.set('content-type', 'text/html');
+      res.send(result);
+      res.end();
+    });
+  });
+} else {
+  app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  });
 }
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 app.use(express.static(path.join(__dirname, '/')));
-
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 // 在线用户
 var onlineUsers = {};
