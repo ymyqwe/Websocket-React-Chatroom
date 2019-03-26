@@ -2,6 +2,18 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var openBrowsers = require('open-browsers');
+
+// log
+const log4js = require('log4js');
+log4js.addLayout('json', config => function (logEvent) {
+  logEvent.data = logEvent.data[0];
+  return JSON.stringify(logEvent) + config.separator;
+});
+const logConf = require('./conf/log.conf');
+log4js.configure(logConf);
+const logger = log4js.getLogger('chatLog');
+
+
 // 开发模式热更新
 if (process.env.NODE_ENV !== 'production') {
   var webpack = require('webpack');
@@ -53,6 +65,7 @@ io.on('connection', function(socket) {
 
     // 向客户端发送登陆事件，同时发送在线用户、在线人数以及登陆用户
     io.emit('login', { onlineUsers: onlineUsers, onlineCount: onlineCount, user: obj });
+    logger.info({ socketId: socket.id, ip: socket.request.connection.remoteAddress, user: obj.username, event: 'in', message: obj.username + '加入了群聊'});
     console.log(obj.username + '加入了群聊');
   });
 
@@ -68,6 +81,7 @@ io.on('connection', function(socket) {
 
       // 向客户端发送登出事件，同时发送在线用户、在线人数以及登出用户
       io.emit('logout', { onlineUsers: onlineUsers, onlineCount: onlineCount, user: obj });
+      logger.info({ socketId: socket.id, ip: socket.request.connection.remoteAddress, user: obj.username, event: 'out', message: obj.username + '退出了群聊'});
       console.log(obj.username + '退出了群聊');
     }
   });
@@ -75,6 +89,7 @@ io.on('connection', function(socket) {
   // 监听客户端发送的信息
   socket.on('message', function(obj) {
     io.emit('message', obj);
+    logger.info({ socketId: socket.id, ip: socket.request.connection.remoteAddress, user: obj.username, event: 'chat', message: obj.username + '说:' + obj.message});
     console.log(obj.username + '说:' + obj.message);
   });
 });
