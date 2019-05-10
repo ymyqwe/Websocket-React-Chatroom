@@ -44,6 +44,12 @@ npm start
 
 ## Changelog
 
+### [2.2.1] / 2019-05-10
+
+- Upgrade tar to <i>4.4.8</i> due to github security alerts
+- Upgrade [React](https://reactjs.org) and React-Dom to <i>16.8.6</i>
+
+
 ### [2.2.0] / 2019-03-26
 
 - Upgrade webpack to v4
