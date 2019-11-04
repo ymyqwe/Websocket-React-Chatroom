@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React, { Component } from 'react';
 
 export default class ChatInput extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ export default class ChatInput extends Component {
   }
 
   // 点击提交或按回车
+  
   handleClick(e) {
     e.preventDefault();
     this.sendMessage();
@@ -29,7 +30,7 @@ export default class ChatInput extends Component {
   }
 
   // 发送聊天信息
-  sendMessage(e) {
+  sendMessage() {
     const message = this.state.message;
     const socket = this.state.socket;
     if (message) {
