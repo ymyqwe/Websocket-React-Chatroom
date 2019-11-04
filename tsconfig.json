@@ -4,6 +4,7 @@
     "sourceMap": true,
     "allowJs": true,
     "module": "commonjs",
+    "esModuleInterop": true,
     "jsx": "react",
     "target": "es5"
   },
