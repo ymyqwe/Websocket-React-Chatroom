@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-type MyProps = { socket: any };
+type MyProps = { socket: any; myId: string; myName: string };
 type MyState = { socket: any; message: string; myId: string; myName: string };
 export default class ChatInput extends Component<MyProps, MyState> {
   constructor(props) {

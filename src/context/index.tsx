@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
+import io from 'socket.io-client';
 
-const Context = createContext();
+const Context = createContext(null);
 
 const initValue = {
   username: '',
