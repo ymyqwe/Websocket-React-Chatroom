@@ -6,6 +6,9 @@ module.exports = {
   mode: 'development',
   entry: ['./src/index', 'webpack-hot-middleware/client?reload=true'],
   devtool: 'source-map',
+  resolve: {
+    extensions: ['.ts', '.js', '.tsx']
+  },
   output: {
     path: path.join(__dirname),
     filename: 'bundle.js',
@@ -22,6 +25,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
       {
         test: /\.js$/,
         exclude: /node_modules/,
