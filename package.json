@@ -31,6 +31,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
@@ -52,14 +54,14 @@
     "socket.io": "^2.2.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.13.1",
+    "typescript": "^3.6.4",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
-    "webpack-hot-middleware": "^2.16.1",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.3",
-    "typescript": "^3.6.4"
+    "webpack-hot-middleware": "^2.16.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
     "eslint": "^5.9.0",
     "eslint-config-google": "^0.11.0",
     "open-browsers": "^1.1.1",
