@@ -12,16 +12,54 @@ const initValue = {
   onlineCount: 0,
   userhtml: ''
 };
+interface Login {
+  uid: string;
+  username: string;
+}
 
+const login = (info: Login): object => {
+  return info;
+};
+
+interface SystemMessage {
+  onlineCount: number;
+  onlineUsers: object;
+  message: Message;
+}
+
+const systemMessage = (sysMsg: SystemMessage, state): object => {
+  return {
+    messages: state.messages.concat(sysMsg.message),
+    onlineUsers: sysMsg.onlineUsers,
+    onlineCount: sysMsg.onlineCount
+  };
+};
+
+interface Message {
+  type: number;
+  username: string;
+  uid: string;
+  action: string;
+  msgId: string;
+  time: string;
+}
+interface UserMessage {
+  message: Message;
+}
+const userMessage = (usrMsg: UserMessage, state): object => {
+  return {
+    messages: state.messages.concat(usrMsg.message)
+  };
+};
 function reducer(state, action) {
   // console.log(state, action);
   switch (action.type) {
     case 'login':
-      return { ...state, ...action.payload };
+      return { ...state, ...login(action.payload) };
     case 'UPDATE_SYSTEM_MESSAGE':
-      return { ...state, ...{ messages: state.messages.concat(action.payload.message) }, ...{ onlineUsers: action.payload.onlineUsers }, ...{ onlineCount: action.payload.onlineCount } };
+      return { ...state, ...systemMessage(action.payload, state) };
     case 'UPDATE_USER_MESSAGE':
-      return { ...state, ...{ messages: state.messages.concat(action.payload.message) } };
+      return { ...state, ...userMessage(action.payload, state) };
     default:
       return state;
   }
