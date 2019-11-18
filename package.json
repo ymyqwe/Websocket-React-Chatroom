@@ -9,7 +9,7 @@
     "prod": "NODE_ENV=production node server.js",
     "build": "webpack -p --config webpack.config.prod.js",
     "server": "run-s build prod",
-    "lint": "eslint src --fix --ext .js"
+    "lint": "eslint src --fix --ext .tsx,.ts"
   },
   "repository": {
     "type": "git",
