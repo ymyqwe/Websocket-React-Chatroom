@@ -1,16 +1,14 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["google", "eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true
-    }
+    "sourceType": "module"
   },
+  "extends": ["google", "eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "no-console": 1,
     "react/prop-types": 0,
-    "no-undef": 1
+    "no-undef": 0,
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
   }
 }
