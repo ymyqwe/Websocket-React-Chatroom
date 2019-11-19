@@ -38,17 +38,20 @@ npm start
 - [x] [Redux](https://github.com/reduxjs/redux)-like style state manage
 - [x] [Log4js](https://github.com/log4js-node/log4js-node)
 - [ ] [React-router](https://github.com/ReactTraining/react-router)
-- [ ] [Typescript](https://github.com/Microsoft/TypeScript)
+- [x] [Typescript](https://github.com/Microsoft/TypeScript)
 - [x] [Webpack-v4](https://github.com/webpack/webpack)
 - [ ] Test
 
 ## Changelog
 
+### [3.0.0] / 2019-11-19
+
+- Refactor with Typescipt
+
 ### [2.2.1] / 2019-05-10
 
 - Upgrade tar to <i>4.4.8</i> due to github security alerts
 - Upgrade [React](https://reactjs.org) and React-Dom to <i>16.8.6</i>
-
 
 ### [2.2.0] / 2019-03-26
 
