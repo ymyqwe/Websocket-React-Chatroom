@@ -46,7 +46,7 @@ npm start
 
 ### [3.0.0] / 2019-11-19
 
-- Refactor with Typescipt
+- Refactor with Typescript
 
 ### [2.2.1] / 2019-05-10
 
