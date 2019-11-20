@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-export default class ChatInput extends Component {
+interface MyProps { socket: any; myId: string; myName: string }
+interface MyState { socket: any; message: string; myId: string; myName: string }
+export default class ChatInput extends Component<MyProps, MyState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +19,7 @@ export default class ChatInput extends Component {
   }
 
   // 点击提交或按回车
+
   handleClick(e) {
     e.preventDefault();
     this.sendMessage();
@@ -29,7 +32,7 @@ export default class ChatInput extends Component {
   }
 
   // 发送聊天信息
-  sendMessage(e) {
+  sendMessage() {
     const message = this.state.message;
     const socket = this.state.socket;
     if (message) {
@@ -48,7 +51,7 @@ export default class ChatInput extends Component {
       <div className="bottom-area">
         <div className="input-box">
           <div className="input">
-            <input type="text" maxLength="140" placeholder="按回车提交" value={this.state.message} onKeyPress={this.handleKeyPress.bind(this)} onChange={this.handleChange.bind(this)} />
+            <input type="text" maxLength={140} placeholder="按回车提交" value={this.state.message} onKeyPress={this.handleKeyPress.bind(this)} onChange={this.handleChange.bind(this)} />
           </div>
           <div className="button">
             <button type="button" onClick={this.handleClick.bind(this)}>
@@ -57,7 +60,6 @@ export default class ChatInput extends Component {
           </div>
         </div>
       </div>
-
     );
   }
 }

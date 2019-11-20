@@ -10,6 +10,9 @@ module.exports = {
     filename: 'bundle.[hash].js',
     publicPath: '/dist/'
   },
+  resolve: {
+    extensions: ['.ts', '.js', '.tsx']
+  },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
@@ -18,6 +21,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
       {
         test: /\.js$/,
         exclude: /node_modules/,

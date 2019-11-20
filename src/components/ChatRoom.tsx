@@ -10,11 +10,11 @@ const generateMsgId = () => {
 
 // 时间格式
 const generateTime = () => {
-  let hour = new Date().getHours();
-  let minute = new Date().getMinutes();
-  hour = hour == 0 ? '00' : hour;
-  minute = minute < 10 ? '0' + minute : minute;
-  return hour + ':' + minute;
+  const hour = new Date().getHours();
+  const minute = new Date().getMinutes();
+  const hourText = hour === 0 ? '00' : hour + '';
+  const minuteText = minute < 10 ? '0' + minute : minute + '';
+  return hourText + ':' + minuteText;
 };
 
 const ChatRoom = (props) => {
@@ -65,13 +65,13 @@ const ChatRoom = (props) => {
     let userhtml = '';
     let separator = '';
     for (const key in users) {
-      if (users.hasOwnProperty(key)) {
+      if (users.key) {
         userhtml += separator + users[key];
         separator = '、';
       }
     }
-    return userhtml
-  }
+    return userhtml;
+  };
   return (
     <div className="chat-room">
       <div className="welcome">

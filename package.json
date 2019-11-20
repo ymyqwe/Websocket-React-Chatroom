@@ -9,7 +9,7 @@
     "prod": "NODE_ENV=production node server.js",
     "build": "webpack -p --config webpack.config.prod.js",
     "server": "run-s build prod",
-    "lint": "eslint src --fix --ext .js"
+    "lint": "eslint src --fix --ext .tsx,.ts"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,9 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
@@ -43,23 +46,28 @@
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "log4js": "^4.1.0",
+    "micromatch": "^4.0.2",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "sass-loader": "^5.0.1",
     "socket.io": "^2.2.0",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^0.13.1",
+    "typescript": "^3.6.4",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-hot-middleware": "^2.16.1"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
     "eslint-config-google": "^0.11.0",
     "open-browsers": "^1.1.1",
     "webpack-cli": "^3.3.0",
     "webpack-dev-middleware": "^1.12.2",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.9.0"
   }
 }
