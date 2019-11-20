@@ -65,7 +65,7 @@ const ChatRoom = (props) => {
     let userhtml = '';
     let separator = '';
     for (const key in users) {
-      if (users.hasOwnProperty(key)) {
+      if (users.key) {
         userhtml += separator + users[key];
         separator = '、';
       }
