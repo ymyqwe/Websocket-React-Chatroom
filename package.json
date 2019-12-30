@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "cross-env NODE_ENV=dev node server.js",
-    "prod": "cross-env NODE_ENV=production node server.js",
+    "start": "NODE_ENV=dev node server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "start:CE": "cross-env NODE_ENV=dev node server.js",
+    "prod:CE": "cross-env NODE_ENV=production node server.js",
     "build": "webpack -p --config webpack.config.prod.js",
     "server": "run-s build prod",
     "lint": "eslint src --fix --ext .tsx,.ts"

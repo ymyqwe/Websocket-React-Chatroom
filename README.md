@@ -25,6 +25,18 @@ npm install
 npm start
 ```
 
+## For WINDOWS
+
+`npm install` might fail.
+
+View detail with this [pull request](https://github.com/ymyqwe/Websocket-React-Chatroom/pull/9)
+
+- Try Out
+
+```bash
+npm run start:CE
+```
+
 ## Demo
 
 [Live Demo](http://chat.yumingyuan.me)
@@ -43,6 +55,10 @@ npm start
 - [ ] Test
 
 ## Changelog
+
+### [3.1.0] / 2019-12-30
+
+- Add [cross-env](https://www.npmjs.com/package/cross-env) package to support WINDOWS
 
 ### [3.0.0] / 2019-11-19
 
