@@ -9,7 +9,7 @@ const userState = (username) => {
 };
 
 const generateUid = () => {
-  return new Date().getTime() + '' + Math.floor(Math.random() * 999 + 1);
+  return String(new Date().getTime()) + Math.floor(Math.random() * 999 + 1);
 };
 
 const App = (props) => {
@@ -24,7 +24,7 @@ const App = (props) => {
     state.socket.emit('login', { uid, username });
   };
   const handleKeyPress = (e) => {
-    if (e.key == 'Enter') {
+    if (e.key === 'Enter') {
       handleLogin();
     }
     return false;

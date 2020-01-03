@@ -5,15 +5,15 @@ import { Context } from '../context';
 
 // 生成消息id
 const generateMsgId = () => {
-  return new Date().getTime() + '' + Math.floor(Math.random() * 899 + 100);
+  return String(new Date().getTime()) + Math.floor(Math.random() * 899 + 100);
 };
 
 // 时间格式
 const generateTime = () => {
   const hour = new Date().getHours();
   const minute = new Date().getMinutes();
-  const hourText = hour === 0 ? '00' : hour + '';
-  const minuteText = minute < 10 ? '0' + minute : minute + '';
+  const hourText = hour === 0 ? '00' : String(hour);
+  const minuteText = minute < 10 ? '0' + minute : String(minute);
   return hourText + ':' + minuteText;
 };
 

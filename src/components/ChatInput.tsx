@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 
-interface MyProps { socket: any; myId: string; myName: string }
-interface MyState { socket: any; message: string; myId: string; myName: string }
+interface MyProps {
+  socket: any;
+  myId: string;
+  myName: string;
+}
+interface MyState {
+  socket: any;
+  message: string;
+  myId: string;
+  myName: string;
+}
 export default class ChatInput extends Component<MyProps, MyState> {
-  constructor(props) {
+  public constructor(props: MyProps) {
     super(props);
     this.state = {
       socket: props.socket,
@@ -14,25 +23,26 @@ export default class ChatInput extends Component<MyProps, MyState> {
   }
 
   // 监控input变化
-  handleChange(e) {
+  public handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ message: e.target.value });
   }
 
   // 点击提交或按回车
 
-  handleClick(e) {
+  public handleClick(e: MouseEvent) {
     e.preventDefault();
     this.sendMessage();
   }
-  handleKeyPress(e) {
-    if (e.key == 'Enter') {
+
+  public handleKeyPress(e: KeyboardEvent): boolean {
+    if (e.key === 'Enter') {
       this.sendMessage();
     }
     return false;
   }
 
   // 发送聊天信息
-  sendMessage() {
+  public sendMessage(): boolean {
     const message = this.state.message;
     const socket = this.state.socket;
     if (message) {
@@ -46,7 +56,7 @@ export default class ChatInput extends Component<MyProps, MyState> {
     }
     return false;
   }
-  render() {
+  public render(): JSX.Element {
     return (
       <div className="bottom-area">
         <div className="input-box">

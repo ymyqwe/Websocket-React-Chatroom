@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { Context } from '../context';
 
 const Message = (props) => {
-  if (props.msgType == 'system') {
+  if (props.msgType === 'system') {
     return (
       <div className="one-message system-message">
-        {props.msgUser} {props.action == 'login' ? '进入了聊天室' : '离开了聊天室'} <span className="time">&nbsp;{props.time}</span>
+        {props.msgUser} {props.action === 'login' ? '进入了聊天室' : '离开了聊天室'} <span className="time">&nbsp;{props.time}</span>
       </div>
     );
   } else {
@@ -33,7 +33,7 @@ const Messages = (props) => {
   return (
     <div className="messages" ref={messageList}>
       {messages.map((message) => (
-        <Message key={message.msgId} msgType={message.type} msgUser={message.username} action={message.action} isMe={uid == message.uid ? true : false} time={message.time} />
+        <Message key={message.msgId} msgType={message.type} msgUser={message.username} action={message.action} isMe={uid === message.uid ? true : false} time={message.time} />
       ))}
     </div>
   );

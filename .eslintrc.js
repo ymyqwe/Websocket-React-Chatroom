@@ -3,7 +3,7 @@ module.exports = {
   parserOptions: {
     sourceType: 'module'
   },
-  extends: ['google', 'eslint:recommended', 'plugin:react/recommended'],
+  extends: ['alloy', 'alloy/react', 'alloy/typescript'],
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'no-console': 1,
