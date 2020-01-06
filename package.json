@@ -67,7 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "cross-env": "^6.0.3",
-    "eslint": "^6.6.0",
+    "eslint": "^6.8.0",
     "eslint-config-google": "^0.11.0",
     "open-browsers": "^1.1.1",
     "webpack-cli": "^3.3.0",
