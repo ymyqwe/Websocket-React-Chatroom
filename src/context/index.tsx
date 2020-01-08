@@ -3,7 +3,17 @@ import io from 'socket.io-client';
 
 const Context = createContext(null);
 
-const initValue = {
+interface StateType {
+  username: string;
+  uid: string;
+  socket: any;
+  messages: [];
+  onlineUsers: { [key: string]: string };
+  onlineCount: number;
+  userhtml: string;
+}
+
+const initValue: StateType = {
   username: '',
   uid: '',
   socket: io(),
@@ -51,7 +61,13 @@ const userMessage = (usrMsg: UserMessage, state): object => {
     messages: state.messages.concat(usrMsg.message)
   };
 };
-function reducer(state, action) {
+interface Payload extends UserMessage, SystemMessage, Login {}
+interface ActionType {
+  type: string;
+  payload: Payload;
+}
+
+const reducer = (state: StateType, action: ActionType): StateType => {
   // console.log(state, action);
   switch (action.type) {
     case 'login':
@@ -63,7 +79,7 @@ function reducer(state, action) {
     default:
       return state;
   }
-}
+};
 
 const ContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, initValue);
