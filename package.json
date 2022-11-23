@@ -55,7 +55,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "sass-loader": "^5.0.1",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.5.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.13.1",
     "typescript": "^3.6.4",
